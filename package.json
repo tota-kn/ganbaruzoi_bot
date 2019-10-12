@@ -4,6 +4,12 @@
   "private": true,
   "author": "iwato",
   "description": "A simple helpful robot for your Company",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc scripts/*.ts",
+    "watch": "tsc -w scripts/*.ts",
+    "dev": "tsc scripts/*.ts && tsc -w scripts/*.ts"
+  },
   "dependencies": {
     "@types/hubot": "^2.19.5",
     "@types/lodash": "^4.14.144",
