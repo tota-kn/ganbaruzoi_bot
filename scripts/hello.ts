@@ -1,9 +1,18 @@
 import hubot = require("hubot");
+import _ = require("lodash");
+
+const fs = require('fs');
+const csvSync = require('csv-parse/lib/sync');
+
+function getCsv(file): Object {
+    const data = fs.readFileSync(file);
+    return csvSync(data);
+}
 
 module.exports = (robot: hubot.Robot<any>): void => {
     robot.respond(/今日も一日/i, (msg: hubot.Response<any>) => {
-        msg.reply("がんばるぞい!");
-        const imageUrl = "https://gyazo.com/8e9f54cdb2b5b9ad4d646c49ee62c5eb";
+        const data = getCsv(__dirname + '/../imageUrl.csv');
+        const imageUrl = _.sample(data)[0];
         msg.reply(imageUrl);
     });
 };
